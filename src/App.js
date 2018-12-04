@@ -5,7 +5,7 @@ import MyName from './MyName';
 class App extends Component {
   render() {
     return (
-      <MyName />
+      <Counter />
     );
   }
 }
