@@ -28,3 +28,5 @@ class PhoneInfo extends Component {
         );
     }
 }
+
+export default PhoneInfo;
