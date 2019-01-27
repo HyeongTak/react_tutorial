@@ -1,64 +1,33 @@
 import React, { Component } from 'react';
+import { decorate, observable, action } from 'mobx';
+import { observer } from 'mobx-react';
 
 class Counter extends Component {
-  state = {
-    number: 0
-  }
-  
-  constructor(props) {
-    super(props);
-    console.log('constructor');
-  }
-  
-  componentWillMount() {
-    console.log('componentWillMount (deprecated)');
+  number = 0;
+
+  increase = () => {
+    this.number++;
   }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    // 5 의 배수라면 리렌더링 하지 않음
-    console.log('shouldComponentUpdate');
-    if (nextState.number % 5 === 0) return false;
-    return true;
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('componentWillUpdate');
-  }
-  
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-  }
-  
-
-  handleIncrease = () => {
-    const { number } = this.state;
-    this.setState({
-      number: number + 1
-    });
-  }
-
-  handleDecrease = () => {
-    this.setState(
-      ({ number }) => ({
-        number: number - 1
-      })
-    );
+  decrease = () => {
+    this.number--;
   }
 
   render() {
     return (
       <div>
-        <h1>카운터</h1>
-        <div>값: {this.state.number}</div>
-        <button onClick={this.handleIncrease}>+</button>
-        <button onClick={this.handleDecrease}>-</button>
+        <h1>{this.number}</h1>
+        <button onClick={this.increase}>+1</button>
+        <button onClick={this.decrease}>-1</button>
       </div>
     );
   }
 }
 
-export default Counter;
+decorate(Counter, {
+  number: observable,
+  increase: action,
+  decrease: action
+})
+
+export default observer(Counter);
