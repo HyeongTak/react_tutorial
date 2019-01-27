@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.1.0",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@svgr/webpack": "2.4.1",
@@ -117,8 +116,25 @@
       "react-app"
     ],
     "plugins": [
-        ["@babel/plugin-proposal-decorators", { "legacy": true}],
-        ["@babel/plugin-proposal-class-properties", { "loose": true}]
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-async-generator-functions": "^7.2.0",
+    "@babel/plugin-transform-literals": "^7.2.0",
+    "babel-cli": "^6.26.0"
   }
 }
