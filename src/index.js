@@ -4,13 +4,14 @@ import { Provider } from 'mobx-react';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import CounterStore from './stores/counter'; // 방금 만든 스토어 불러와줍니다.
+import CounterStore from './stores/counter'; 
+import MarketStore from './stores/market';
 
 const counter = new CounterStore();
+const market = new MarketStore();
 
 ReactDOM.render(
-    <Provider counter={counter}>
-      {/* Provider 에 props 로 넣어줍니다. */}
+    <Provider counter={counter} market={market}>
       <App />
     </Provider>,
     document.getElementById('root')
