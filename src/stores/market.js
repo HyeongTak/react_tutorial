@@ -9,16 +9,19 @@ export default class MarketStore {
 
     @action
     put = (name, price) => {
+        const { number } = this.root.counter;
+        // 존재하는지 찾고
         const exists = this.selectedItems.find(item => item.name === name);
-        if(!exists) {
-            this.selectedItems.push({
-                name,
-                price,
-                count : 1
-            });
-            return;
+        if (!exists) {
+        // 존재하지 않는다면 새로 집어넣습니다.
+        this.selectedItems.push({
+            name,
+            price,
+            count: number,
+        });
+        return;
         }
-        exists.count++;
+        exists.count += number;
     };
 
     @action
