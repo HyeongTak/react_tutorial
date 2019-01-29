@@ -3,6 +3,10 @@ import { observable, action, computed } from 'mobx';
 export default class MarketStore {
     @observable selectedItems = [];
 
+    constructor(root) {
+        this.root = root;
+      }
+
     @action
     put = (name, price) => {
         const exists = this.selectedItems.find(item => item.name === name);
